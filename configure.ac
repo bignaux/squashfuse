@@ -1,4 +1,4 @@
-AC_INIT([squashfuse], [0.1.100], [dave@vasilevsky.ca])
+AC_INIT([squashfuse], [0.1.101], [dave@vasilevsky.ca])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_HEADERS([config.h])
@@ -31,6 +31,7 @@ SQ_CHECK_DECOMPRESS([ZLIB],[z],[uncompress],[zlib.h])
 SQ_CHECK_DECOMPRESS([XZ],[lzma],[lzma_stream_buffer_decode],[lzma.h],[liblzma])
 SQ_CHECK_DECOMPRESS([LZO],[lzo2],[lzo1x_decompress_safe],[lzo/lzo1x.h])
 SQ_CHECK_DECOMPRESS([LZ4],[lz4],[LZ4_decompress_safe],[lz4.h])
+SQ_CHECK_DECOMPRESS([ZSTD],[zstd],[ZSTD_decompress],[zstd.h])
 AS_IF([test "x$sq_decompressors" = x],
 	[AC_MSG_FAILURE([At least one decompression library must exist])])
 
